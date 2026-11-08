@@ -1,0 +1,7 @@
+streamlit>=1.40
+pandas>=2.2
+duckdb>=1.1
+pymupdf>=1.24
+# OCR para fotos de facturas (sesión 10). Es pesado: si no está instalado, la app lee solo PDF.
+paddlepaddle>=3.0
+paddleocr>=3.0
