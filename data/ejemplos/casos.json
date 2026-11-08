@@ -1,0 +1,27 @@
+[
+  {
+    "caso": "caso_1_cuadra",
+    "titulo": "Todo cuadra",
+    "notas": [
+      "La factura, la OC y la guía coinciden."
+    ],
+    "proveedor_ruc": "20123531389"
+  },
+  {
+    "caso": "caso_2_descuadre",
+    "titulo": "Cobra de más",
+    "notas": [
+      "Facturan 12 baldes y a obra llegaron 10.",
+      "El precio de la pintura sube de 185.00 a 198.00."
+    ],
+    "proveedor_ruc": "20126015900"
+  },
+  {
+    "caso": "caso_3_riesgo",
+    "titulo": "Proveedor con alerta",
+    "notas": [
+      "Los documentos cuadran, pero el proveedor tiene una alerta en SUNAT u OSCE."
+    ],
+    "proveedor_ruc": "20568769792"
+  }
+]
