@@ -2,7 +2,7 @@
 
 > **Revisamos las facturas de los proveedores de las constructoras pequeñas y medianas contra la orden de compra y la guía de remisión, y verificamos al proveedor en la SUNAT y el OSCE, antes de pagar.**
 
-**Demo:** _URL pública por publicar_ · **Video de respaldo:** _por grabar_ · **Corre en local:** ver [Cómo correrlo](#cómo-correrlo)
+**Demo en vivo:** **https://conforme-facturas.streamlit.app** · **Video de respaldo:** [docs/video/conforme_demo.mp4](docs/video/conforme_demo.mp4) · **Corre en local:** ver [Cómo correrlo](#cómo-correrlo)
 
 ![Revisión de una factura que no cuadra](docs/capturas/1_revisar_factura.png)
 
@@ -65,7 +65,7 @@ Además, verifica una lista completa de proveedores de una sola vez (pegada o en
 
 ## 6. Demo
 
-**URL:** _por publicar en Streamlit Community Cloud_. Para correrlo en local, ver abajo.
+**URL:** https://conforme-facturas.streamlit.app (Streamlit Community Cloud, Python 3.11). Si la app estuvo inactiva, Streamlit la "despierta" en unos segundos. Para correrlo en local, ver abajo.
 
 **El flujo del demo (2 minutos):**
 
