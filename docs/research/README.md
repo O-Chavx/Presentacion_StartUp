@@ -1,6 +1,19 @@
 # Conversaciones con usuarios potenciales
 
-Aquí van las notas de las 3 conversaciones (una por archivo: `01_logistica.md`, `02_contabilidad.md`, `03_residente_obra.md`). Se citan solo con el cargo y el tipo de empresa, salvo que la persona haya dado permiso para usar su nombre.
+Notas de las 3 conversaciones, del 8 y 9 de noviembre de 2026. Las personas se citan solo por su cargo.
+
+| # | Quién | Medio | Lo principal |
+|---|---|---|---|
+| 1 | [Asistente de logística](01_logistica.md) | Llamada, 15 min | 70 a 80 facturas al mes en una obra, de 5 a 10 min cada una; "la que se pierde es la guía" |
+| 2 | [Asistente contable](02_contabilidad.md) | WhatsApp, 15 min | 150 a 200 facturas al mes; un proveedor resultó no habido después de pagarle (unos S/ 1,500 de IGV en duda) |
+| 3 | [Ingeniero residente de obra](03_residente_obra.md) | Llamada, 10 min | 40 a 60 guías al mes; entregas por partes: una OC, varias guías y una factura |
+
+## Lo que aprendí
+
+1. **Nadie hace el cruce completo.** Logística compara cuando tiene la guía, contabilidad confía en logística y el residente confía en el almacenero.
+2. **El cuello de botella es la guía, no la factura.** Llega como foto por WhatsApp, o se pierde, y la factura queda "pendiente" semanas.
+3. **El RUC se revisa solo al dar de alta al proveedor**, no al pagar. Así se pagó a un proveedor que ya estaba no habido.
+4. **Hay entregas parciales:** una OC puede tener varias guías y una sola factura.
 
 ## Guía de preguntas
 

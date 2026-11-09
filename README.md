@@ -36,11 +36,26 @@ Cómo cubro cada frente siendo una sola persona:
 - las cuentas de la factura están bien (importes, IGV y total);
 - el proveedor está activo y habido en la SUNAT. Si está no habido, la empresa puede perder el crédito fiscal del IGV de esa factura.
 
-**Cómo lo resuelven hoy:** a mano. Se imprime o se abre la factura, se busca la OC en un Excel o en el correo, se busca la guía firmada en un archivador o en una foto de WhatsApp, y se compara línea por línea. La consulta RUC de la SUNAT se hace de a un RUC, con captcha, y casi nunca se revisa el registro de sancionados del OSCE.
+**Cómo lo resuelven hoy:** a mano y en tres áreas que no se hablan. Así funcionaba en la obra del Congreso, según las 3 conversaciones:
 
-**Cuánto les cuesta:** _se completa con las 3 conversaciones (tiempo por factura, facturas al mes y el último descuadre que recuerdan)._
+- La factura llega al correo en PDF y XML, la OC está en una carpeta compartida y la guía la manda el almacenero **como foto por WhatsApp**. Logística lo anota todo en un Excel de control.
+- Contabilidad recibe las facturas "aprobadas" y no vuelve a cruzarlas: *"Yo confío en que logística ya lo revisó, y logística confía en que obra ya lo contó"*.
+- El residente firma de 40 a 60 guías al mes y admite que no siempre cuenta todo.
+- La consulta RUC de la SUNAT se hace solo cuando el proveedor es nuevo, de a un RUC y con captcha. El registro de sancionados del OSCE no se revisa.
 
-**Evidencia:** notas de 3 conversaciones con usuarios potenciales en [`docs/research/`](docs/research/).
+**Cuánto les cuesta** (una constructora mediana, según las conversaciones):
+
+| Costo | Dato |
+|---|---|
+| Horas de logística | 70 a 80 facturas al mes en una sola obra, de 5 a 10 min cada una: **de 6 a 13 horas al mes por obra** |
+| Horas de contabilidad | 150 a 200 facturas al mes en todas las obras, de 2 a 4 min cada una, solo en lo tributario |
+| Pagos de más | Un proveedor de madera facturó la entrega completa cuando solo había llegado una parte: **unos S/ 2,000**, recuperados con una nota de crédito |
+| Crédito fiscal en riesgo | A un proveedor de ferretería se le pagó cuando ya estaba no habido: **unos S/ 1,500 de IGV** en duda |
+| Pagos trabados | Si falta la guía, la factura queda "pendiente": *"había facturas que estaban un mes en amarillo en el Excel"* |
+
+**Evidencia:** notas de las 3 conversaciones (asistente de logística, asistente contable e ingeniero residente) en [`docs/research/`](docs/research/).
+
+> *"La factura siempre llega. La que se pierde es la guía."* · Asistente de logística
 
 ## 4. Solución e insight
 
@@ -162,9 +177,10 @@ pytest -q                            # 11 pruebas
 
 **Qué sigue:**
 
-1. Leer el XML de la factura electrónica (el formato UBL de la SUNAT), que es exacto.
-2. Recibir las facturas por correo o por WhatsApp.
-3. El segundo módulo: los **expedientes del personal de obra** (contratos, SCTR y exámenes médicos), que avisa qué documentos faltan o están por vencer.
+1. **Entregas parciales:** una OC con varias guías contra una sola factura, con el saldo de lo que falta llegar (lo pidió el residente de obra).
+2. **Subir la guía como foto desde el celular** en el momento en que entra el material (lo pidió logística).
+3. Leer el XML de la factura electrónica (el formato UBL de la SUNAT), que es exacto, y recibir las facturas por correo.
+4. El segundo módulo: los **expedientes del personal de obra** (contratos, SCTR y exámenes médicos), que avisa qué documentos faltan o están por vencer.
 
 ## 8. Herramientas del curso
 
