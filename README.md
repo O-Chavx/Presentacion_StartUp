@@ -1,4 +1,4 @@
-# Conforme
+# Conforme, control de facturas de proveedores para constructoras
 
 > **Revisamos las facturas de los proveedores de las constructoras pequeñas y medianas contra la orden de compra y la guía de remisión, y verificamos al proveedor en la SUNAT y el OSCE, antes de pagar.**
 

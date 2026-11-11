@@ -27,7 +27,7 @@ EJEMPLOS = RAIZ / "data" / "ejemplos"
 COLOR = {VERDE: "#1a7f37", AMBAR: "#b26b00", ROJO: "#c62828"}
 ICONO = {VERDE: "✅", AMBAR: "⚠️", ROJO: "⛔"}
 
-st.set_page_config(page_title="Conforme · facturas que cuadran", page_icon="🧾", layout="wide")
+st.set_page_config(page_title="Conforme · control de facturas de proveedores para constructoras", page_icon="🧾", layout="wide")
 
 
 def ocr_disponible() -> bool:
@@ -65,6 +65,7 @@ if "historial" not in st.session_state:
 
 # ---------------------------------------------------------------- encabezado
 st.title("🧾 Conforme")
+st.markdown("#### Control de facturas de proveedores para constructoras")
 st.markdown("**Revisamos las facturas de tus proveedores contra la orden de compra y la guía de remisión, y verificamos el RUC en la SUNAT y el OSCE, antes de que pagues.**")
 disp = datos_disponibles()
 if not all(disp.values()):
