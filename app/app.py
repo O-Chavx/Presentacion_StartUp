@@ -12,6 +12,7 @@ import tempfile
 from datetime import datetime
 from pathlib import Path
 
+import altair as alt
 import pandas as pd
 import streamlit as st
 
@@ -26,6 +27,7 @@ from core.proveedores import consultar, consultar_lote, datos_disponibles  # noq
 EJEMPLOS = RAIZ / "data" / "ejemplos"
 COLOR = {VERDE: "#1a7f37", AMBAR: "#b26b00", ROJO: "#c62828"}
 ICONO = {VERDE: "✅", AMBAR: "⚠️", ROJO: "⛔"}
+ETIQUETA_NIVEL = {VERDE: "Se puede pagar", AMBAR: "Revisar", ROJO: "No pagar todavía"}
 
 st.set_page_config(page_title="Conforme · control de facturas de proveedores para constructoras", page_icon="🧾", layout="wide")
 
@@ -212,7 +214,11 @@ with tab_prov:
 # ---------------------------------------------------------------- 3. panel
 with tab_panel:
     h = st.session_state.historial
-    if st.button("Cargar los 3 casos de ejemplo al panel"):
+    b1, b2 = st.columns([2, 1])
+    if b2.button("Limpiar el panel"):
+        h.clear()
+    if b1.button(f"Cargar los {len(casos)} casos de ejemplo al panel"):
+        h.clear()
         for c in casos:
             d = EJEMPLOS / c["caso"]
             fac = a_documento(leer_extraer((d / "factura.pdf").read_bytes(), "factura.pdf", "factura"))
@@ -234,13 +240,48 @@ with tab_panel:
         k4.metric("Con observaciones", f"{(df['resultado'] != VERDE).sum()} de {len(df)}")
         c1, c2 = st.columns(2)
         with c1:
-            st.markdown("**Observaciones por tema**")
-            temas = df.explode("temas")["temas"].dropna().value_counts()
-            if len(temas):
-                st.bar_chart(temas)
-        with c2:
             st.markdown("**Resultado de las revisiones**")
-            st.bar_chart(df["resultado"].value_counts())
+            res_df = df["resultado"].value_counts().rename_axis("nivel").reset_index(name="facturas")
+            res_df["Resultado"] = res_df["nivel"].map(ETIQUETA_NIVEL)
+            orden = [ETIQUETA_NIVEL[n] for n in (VERDE, AMBAR, ROJO)]
+            st.altair_chart(
+                alt.Chart(res_df).mark_bar().encode(
+                    x=alt.X("Resultado:N", sort=orden, title=None, axis=alt.Axis(labelAngle=0)),
+                    y=alt.Y("facturas:Q", title="Facturas", axis=alt.Axis(tickMinStep=1)),
+                    color=alt.Color("Resultado:N", scale=alt.Scale(domain=orden, range=[COLOR[VERDE], COLOR[AMBAR], COLOR[ROJO]]), legend=None),
+                    tooltip=["Resultado", "facturas"],
+                ).properties(height=260),
+                use_container_width=True,
+            )
+        with c2:
+            st.markdown("**Observaciones por tema**")
+            temas = df.explode("temas")["temas"].dropna().value_counts().rename_axis("Tema").reset_index(name="veces")
+            if len(temas):
+                st.altair_chart(
+                    alt.Chart(temas).mark_bar().encode(
+                        y=alt.Y("Tema:N", sort="-x", title=None),
+                        x=alt.X("veces:Q", title="Veces", axis=alt.Axis(tickMinStep=1)),
+                        color=alt.Color("Tema:N", scale=alt.Scale(scheme="tableau10"), legend=None),
+                        tooltip=["Tema", "veces"],
+                    ).properties(height=260),
+                    use_container_width=True,
+                )
+            else:
+                st.caption("Sin observaciones.")
+        st.markdown("**Monto retenido por proveedor**")
+        ret = df.groupby("proveedor", as_index=False)["a_retener"].sum()
+        ret = ret[ret["a_retener"] > 0]
+        if len(ret):
+            st.altair_chart(
+                alt.Chart(ret).mark_bar(color=COLOR[ROJO]).encode(
+                    y=alt.Y("proveedor:N", sort="-x", title=None, axis=alt.Axis(labelLimit=320)),
+                    x=alt.X("a_retener:Q", title="Soles a retener"),
+                    tooltip=["proveedor", alt.Tooltip("a_retener:Q", format=",.2f", title="S/")],
+                ),
+                use_container_width=True,
+            )
+        else:
+            st.caption("No hay montos retenidos.")
         st.dataframe(df.assign(temas=df["temas"].str.join(", ")), hide_index=True, use_container_width=True)
         st.download_button("Descargar historial (CSV)", df.to_csv(index=False).encode("utf-8"), "historial_conforme.csv", "text/csv")
 

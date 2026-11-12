@@ -180,6 +180,26 @@ def a_foto(pdf: Path, png: Path) -> None:
 
 def casos(proveedores: dict[str, dict]) -> list[Caso]:
     p1, p2, p3 = proveedores["ok"], proveedores["descuadre"], proveedores["riesgo"]
+    p4, p5, p6 = proveedores["falta_guia"], proveedores["parcial"], proveedores["ok2"]
+    p7, p8 = proveedores["fuera_oc"], proveedores["no_habido"]
+    agregados = [
+        Item("ARE-GR", "ARENA GRUESA", "M3", 15, 65.00),
+        Item("HOR-01", "HORMIGON DE RIO", "M3", 10, 70.00),
+        Item("PIE-12", "PIEDRA CHANCADA 1/2", "M3", 8, 85.00),
+    ]
+    madera = [Item("TOR-01", "TABLA TORNILLO 1 X 8 X 10 PIES", "PZA", 50, 38.00),
+              Item("LIS-02", "LISTON TORNILLO 2 X 3 X 10 PIES", "PZA", 40, 21.00)]
+    madera_parcial = madera[:1]
+    sanitarios = [
+        Item("INO-01", "INODORO ONE PIECE BLANCO", "UND", 12, 289.00),
+        Item("LAV-01", "LAVATORIO CON PEDESTAL BLANCO", "UND", 12, 145.00),
+        Item("TUB-04", "TUBO PVC DESAGUE 4 X 3 M", "UND", 30, 32.50),
+    ]
+    ferreteria = [Item("CLA-03", "CLAVO PARA MADERA 3 PULGADAS", "KG", 40, 7.50),
+                  Item("SIL-01", "SILICONA TRANSPARENTE X 280 ML", "UND", 24, 14.90)]
+    ferreteria_extra = ferreteria + [Item("DIS-07", "DISCO DE CORTE METAL 7 PULGADAS", "UND", 50, 9.80)]
+    encofrado = [Item("TRI-18", "TRIPLAY FENOLICO 18 MM 1.22 X 2.44", "PZA", 20, 142.00),
+                 Item("DES-01", "DESMOLDANTE PARA ENCOFRADO X 5 GL", "BAL", 4, 118.00)]
     base = [
         Item("CEM-01", "CEMENTO PORTLAND TIPO I X 42.5 KG", "BOL", 100, 28.50),
         Item("FIE-12", "FIERRO CORRUGADO 1/2\" X 9 M", "VAR", 60, 39.90),
@@ -213,6 +233,36 @@ def casos(proveedores: dict[str, dict]) -> list[Caso]:
             "OC-2026-0152", "EG01-00000219", "E001-00000457", "05/11/2026",
             oc=electricos, guia=electricos, factura=electricos,
             notas=["Los documentos cuadran, pero el proveedor tiene una alerta en SUNAT u OSCE."],
+        ),
+        Caso(
+            "caso_4_no_llego", "Cobra algo que no llegó", p4["ruc"], p4["razon_social"],
+            "OC-2026-0155", "T003-00001204", "F003-00008841", "06/11/2026",
+            oc=agregados, guia=agregados[:2], factura=agregados,
+            notas=["La factura cobra la piedra chancada, pero no figura en la guía: no llegó a obra."],
+        ),
+        Caso(
+            "caso_5_parcial", "Entrega parcial", p5["ruc"], p5["razon_social"],
+            "OC-2026-0158", "T001-00002390", "F001-00005512", "07/11/2026",
+            oc=madera, guia=madera_parcial, factura=madera_parcial,
+            notas=["Llegaron y se facturan las tablas, pero los listones de la OC no llegaron: queda un saldo pendiente."],
+        ),
+        Caso(
+            "caso_6_sanitarios", "Todo cuadra (sanitarios)", p6["ruc"], p6["razon_social"],
+            "OC-2026-0160", "T004-00000655", "F004-00002107", "08/11/2026",
+            oc=sanitarios, guia=sanitarios, factura=sanitarios,
+            notas=["La factura, la OC y la guía coinciden."],
+        ),
+        Caso(
+            "caso_7_fuera_oc", "Producto fuera de la OC", p7["ruc"], p7["razon_social"],
+            "OC-2026-0163", "T001-00007718", "F001-00019930", "09/11/2026",
+            oc=ferreteria, guia=ferreteria_extra, factura=ferreteria_extra,
+            notas=["Enviaron y facturan disco de corte, que nadie pidió en la OC."],
+        ),
+        Caso(
+            "caso_8_no_habido", "Proveedor no habido", p8["ruc"], p8["razon_social"],
+            "OC-2026-0166", "T002-00000318", "F002-00001045", "10/11/2026",
+            oc=encofrado, guia=encofrado, factura=encofrado,
+            notas=["Los documentos cuadran, pero el proveedor está NO HABIDO en la SUNAT."],
         ),
     ]
 

@@ -23,5 +23,45 @@
       "Los documentos cuadran, pero el proveedor tiene una alerta en SUNAT u OSCE."
     ],
     "proveedor_ruc": "20568769792"
+  },
+  {
+    "caso": "caso_4_no_llego",
+    "titulo": "Cobra algo que no llegó",
+    "notas": [
+      "La factura cobra la piedra chancada, pero no figura en la guía: no llegó a obra."
+    ],
+    "proveedor_ruc": "20502154401"
+  },
+  {
+    "caso": "caso_5_parcial",
+    "titulo": "Entrega parcial",
+    "notas": [
+      "Llegaron y se facturan las tablas, pero los listones de la OC no llegaron: queda un saldo pendiente."
+    ],
+    "proveedor_ruc": "20101636331"
+  },
+  {
+    "caso": "caso_6_sanitarios",
+    "titulo": "Todo cuadra (sanitarios)",
+    "notas": [
+      "La factura, la OC y la guía coinciden."
+    ],
+    "proveedor_ruc": "20100031567"
+  },
+  {
+    "caso": "caso_7_fuera_oc",
+    "titulo": "Producto fuera de la OC",
+    "notas": [
+      "Enviaron y facturan disco de corte, que nadie pidió en la OC."
+    ],
+    "proveedor_ruc": "20493810341"
+  },
+  {
+    "caso": "caso_8_no_habido",
+    "titulo": "Proveedor no habido",
+    "notas": [
+      "Los documentos cuadran, pero el proveedor está NO HABIDO en la SUNAT."
+    ],
+    "proveedor_ruc": "20101571701"
   }
 ]

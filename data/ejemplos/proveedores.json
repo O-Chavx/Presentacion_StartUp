@@ -1,5 +1,34 @@
 {
-  "ok": {"ruc": "20123531389", "razon_social": "TECNOLOGIA DE MATERIALES S.A."},
-  "descuadre": {"ruc": "20126015900", "razon_social": "PINTURAS DURON S.R.L"},
-  "riesgo": {"ruc": "20568769792", "razon_social": "ELECTRO FERRETERA MIFER E.I.R.L."}
+  "ok": {
+    "ruc": "20123531389",
+    "razon_social": "TECNOLOGIA DE MATERIALES S.A."
+  },
+  "descuadre": {
+    "ruc": "20126015900",
+    "razon_social": "PINTURAS DURON S.R.L"
+  },
+  "riesgo": {
+    "ruc": "20568769792",
+    "razon_social": "ELECTRO FERRETERA MIFER E.I.R.L."
+  },
+  "falta_guia": {
+    "ruc": "20502154401",
+    "razon_social": "AGREGADOS COMERCIALIZADOS S.A.C."
+  },
+  "parcial": {
+    "ruc": "20101636331",
+    "razon_social": "MADERERA LECIC S.A.C."
+  },
+  "ok2": {
+    "ruc": "20100031567",
+    "razon_social": "MATERIALES SANITARIOS S.A.C."
+  },
+  "fuera_oc": {
+    "ruc": "20493810341",
+    "razon_social": "FERRETERIA ALCA S.A.C"
+  },
+  "no_habido": {
+    "ruc": "20101571701",
+    "razon_social": "CONSTRUCTORA ROXI S A"
+  }
 }
